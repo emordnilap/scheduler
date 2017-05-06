@@ -148,13 +148,3 @@ def get_info(soup, course):
             # the current table row and now flip the switch
             on = True
     return all_classes
-
-if __name__ == '__main__':
-    courses = ['cscb36h3y', 'cscb09h3y']
-    soups = get_html(courses)
-    all_info = []
-    for i in range(len(soups)):
-        all_info.append(get_info(soups[i], courses[i]))
-    for info in all_info:
-        for i in info:
-            print(i)
