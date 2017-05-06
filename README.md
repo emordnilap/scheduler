@@ -1,1 +1,1 @@
-# scheduler
+An automatic timetable scheduler for UTSC
