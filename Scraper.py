@@ -4,23 +4,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
-
-
-class Class:
-    def __init__(self, ctype, day, start, end, room, prof, notes):
-        self.ctype = ctype
-        self.day = 'N/A' if day is None else day
-        self.start = 'N/A' if start is None else start
-        self.end = 'N/A' if end is None else end
-        self.room = 'N/A' if room is None else room
-        self.prof = 'N/A' if prof is None else prof
-        self.notes = 'N/A' if notes is None else notes
-
-    def __str__(self):
-        return 'Session: ' + self.ctype + " | Day: " + self.day + \
-               " | Start: " + self.start + " | End: " + self.end + \
-               " | Room: " + self.room   + " | Prof: " + self.prof + \
-               " | Notes: " + self.notes
+from Class import *
 
 
 def get_html(course):
@@ -148,3 +132,22 @@ def get_info(soup, course):
             # the current table row and now flip the switch
             on = True
     return all_classes
+
+if __name__ == '__main__':
+    # Enrolled courses
+    courses = ['cscb36h3y', 'cscb09h3y']
+    # Grab a list of all the html code corresponding to each course, in soup form
+    soups = get_html(courses)
+    all_info = []
+    # Store each class in a list itself, then add it to the main list
+    for i in range(len(soups)):
+        all_info.append(get_info(soups[i], courses[i]))
+    e = 0
+    # First go through the courses
+    for info in all_info:
+        # Print the course code corresponding to the course
+        print(courses[e])
+        # Then go through each individual class
+        for i in info:
+            print(i)
+        e += 1
