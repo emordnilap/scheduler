@@ -20,7 +20,6 @@ def get_html(course):
     REQ: A downloaded Chrome driver at the specified path
     REQ: Internet access
     '''
-    # todo remove chrome driver if possible
     # Creates a chrome driver (a browser)
     # Can be downloaded here:
     # https://sites.google.com/a/chromium.org/chromedriver/
@@ -69,7 +68,6 @@ def get_info(soup, course):
     REQ: soup must be html code obtained from the UTSC timetable site
     REQ: course is a list of full course codes in string form
     '''
-    # todo remove the course requirement above and allow for incorrect course codes, and return error message
     # Get all table rows in the page
     all_tr = soup.find_all('tr')
     # A switch that flips to True when the below loop starts
