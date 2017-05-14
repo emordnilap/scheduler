@@ -1,0 +1,6 @@
+Scraper.py:
+    -remove chrome driver requirement if possible
+    -remove the course requirement and allow for incorrect course codes, and return error message
+
+Filter.py:
+    
