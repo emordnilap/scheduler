@@ -16,6 +16,9 @@ class Time():
         REQ: Time does not pass through midnight, i.e. 23:00 - 00:40 will not be allowed
         REQ: start comes before end
         '''
+        # Store the raw string
+        self.rstart = start
+        self.rend = end
         # Index of the starting time's colon
         s_colon = start.index(':')
         # Index of the ending time's colon
@@ -32,7 +35,13 @@ class Time():
         return get_duration(self.start_hour, self.start_minute, self.end_hour, self.end_minute)
 
     def __str__(self):
-        return str(self.start_hour) + ' ' + str(self.start_minute) + ' ' + str(self.end_hour) + ' ' + str(self.end_minute)
+        return self.rstart + ' - ' + self.rend
+
+    def get_start(self):
+        return self.rstart
+    
+    def get_end(self):
+        return self.rend
 
     def is_conflicting(self, time):
         '''(Time, Time) -> bool
