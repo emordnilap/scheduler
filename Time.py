@@ -39,7 +39,7 @@ class Time():
 
     def get_start(self):
         return self.rstart
-    
+
     def get_end(self):
         return self.rend
 
@@ -75,25 +75,30 @@ class Time():
         # Get the duration of the first starting time
         dur_hour, dur_minute = first.get_length()
 
+        # Initialization
+        is_conflicting = None
+    
         # If the difference between both starting times is larger than
         # the duration of the first starting time, then there is no conflict
         if dur_hour < diff_hour:
-            return False
+            is_conflicting = False
         # If the converse is true, then there is a conflict
         elif dur_hour > diff_hour:
-            return True
+            is_conflicting = True
         # If the length in hours is the same, then the conflict depends
         # on the minutes
         else:
             # Similar to above
             if dur_minute < diff_minute:
-                return False
+                is_conflicting = False
             elif dur_minute > diff_minute:
-                return True
+                is_conflicting = True
             # If the duration in difference and duration in time are the same,
             # then there is no conflict
             else:
-                return False
+                is_conflicting = False
+        
+        return is_conflicting
 
 
 def get_duration(start_hour, start_minute, end_hour, end_minute):
