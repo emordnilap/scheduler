@@ -4,7 +4,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
-from Class import *
+import Class
+import Time
 
 
 def get_html(course):
@@ -92,10 +93,11 @@ def get_info(soup, course):
             # The first data holds the session (t)ype and (num)ber
             # For example, LEC01, TUT0026, PRA0002
             tnum = tr.contents[0].string
-            # If there is no explicit session type and number, it means
-            # it extends from the previous; otherwise save the current
+            # If the session is blank, then it extends from the previous one
+            # So, create blankspaces equal to the length of the previous
+            # session type and number
             if tnum is None:
-                tnum = curr
+                tnum = ' ' * len(curr)
             else:
                 curr = tnum
             # The second data holds the session date in the week
