@@ -4,9 +4,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
-import Class
-import Time
-
+from Class import *
 
 def get_html(course):
     '''(list of str) -> list of BeautifulSoup
