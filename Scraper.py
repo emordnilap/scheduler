@@ -92,10 +92,9 @@ def get_info(soup, course):
             # For example, LEC01, TUT0026, PRA0002
             tnum = tr.contents[0].string
             # If the session is blank, then it extends from the previous one
-            # So, create blankspaces equal to the length of the previous
-            # session type and number
+            # So, copy over the previous session type and number
             if tnum is None:
-                tnum = ' ' * len(curr)
+                tnum = curr
             else:
                 curr = tnum
             # The second data holds the session date in the week
