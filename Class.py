@@ -8,6 +8,8 @@ class Class:
         # Take the first three characters of the class type, and compare it
         # to the value of existing enum. If they match, then set them equal.
         self.ctype = [c.name for c in CType if c.value == ctype[:3]][0]
+        # Class number identification
+        self.cnum = ctype[3:]
         self.day = 'N/A' if day is None else day
         self.time = Time(start, end)
         self.room = 'N/A' if room is None else room
@@ -15,7 +17,7 @@ class Class:
         self.notes = 'N/A' if notes is None else notes
 
     def __str__(self):
-        return 'Session: ' + str(self.ctype) + " | Day: " + self.day + \
+        return 'Session: ' + str(self.ctype) + self.cnum + " | Day: " + self.day + \
                " | Start: " + self.time.get_start() + " | End: " + self.time.get_end() + \
                " | Room: " + self.room + " | Prof: " + self.prof + \
                " | Notes: " + self.notes
