@@ -1,5 +1,3 @@
-from Class import *
-
 class Time():
     '''A class representing a duration of time, and NOT a single point in time'''
 
@@ -77,7 +75,7 @@ class Time():
 
         # Initialization
         is_conflicting = None
-    
+
         # If the difference between both starting times is larger than
         # the duration of the first starting time, then there is no conflict
         if dur_hour < diff_hour:
@@ -97,7 +95,7 @@ class Time():
             # then there is no conflict
             else:
                 is_conflicting = False
-        
+
         return is_conflicting
 
 
