@@ -1,5 +1,5 @@
 from Class import *
-
+import copy
 
 
 class Course():
@@ -15,9 +15,11 @@ class Course():
         self._lectures = {}
         self._tutorials = {}
         self._practicals = {}
-        for clas in classes:
-            ctype = clas.get_ctype()
-            num = clas.get_num()
+        self._sessions = [self._lectures, self._tutorials, self._practicals]
+        for session in classes:
+            ctype = session.get_ctype()
+            num = session.get_num()
+            # Check which type of class it is
             if ctype is CType.LEC:
                 lesson = self._lectures
             elif ctype is CType.TUT:
@@ -27,9 +29,17 @@ class Course():
             # If there is an existing class with the same number
             if num in lesson.keys():
                 # Add the class onto the existing list of class
-                lesson[num].append(clas)
+                lesson[num].append(session)
             # If there is no existing class then create it
             # Or, if there is a different class
             else:
                 # Map the class number to the list of Class
-                lesson = {num: [clas]}
+                lesson[num] = [session]
+        # The length of each course per week (in hours)
+        # Calculated by hours of lectures + tutorials + practicals
+        self._length = 0
+        for session in self._sessions:
+            keys = list(session.keys())
+            # If the dictionary of session is nonempty, get the length of a random session
+            # If the session DNE, then its length is 0
+            self._length += sum([x.get_length() for x in session[keys[0]]] if len(keys) != 0 else [])
