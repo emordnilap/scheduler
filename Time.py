@@ -15,8 +15,8 @@ class Time():
         REQ: start comes before end
         '''
         # Store the raw string
-        self.rstart = start
-        self.rend = end
+        self._rstart = start
+        self._rend = end
         # Index of the starting time's colon
         s_colon = start.index(':')
         # Index of the ending time's colon
@@ -33,13 +33,13 @@ class Time():
         return get_duration(self.start_hour, self.start_minute, self.end_hour, self.end_minute)
 
     def __str__(self):
-        return self.rstart + ' - ' + self.rend
+        return self._rstart + ' - ' + self._rend
 
     def get_start(self):
-        return self.rstart
+        return self._rstart
 
     def get_end(self):
-        return self.rend
+        return self._rend
 
     def is_conflicting(self, time):
         '''(Time, Time) -> bool
