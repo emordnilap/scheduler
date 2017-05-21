@@ -17,6 +17,7 @@ class Class:
         self._room = 'N/A' if room is None else room
         self._prof = 'N/A' if prof is None else prof
         self._notes = 'N/A' if notes is None else notes
+        self._time_length = self._time.get_time_length()
         self._length = self._time.get_length()
 
     def __str__(self):
@@ -24,6 +25,9 @@ class Class:
                " | Start: " + self._time.get_start() + " | End: " + self._time.get_end() + \
                " | Room: " + self._room + " | Prof: " + self._prof + \
                " | Notes: " + self._notes
+
+    def __repr__(self):
+        return self.__str__()
 
     def get_cnum(self):
         return self._cnum
@@ -33,6 +37,9 @@ class Class:
 
     def get_length(self):
         return self._length
+
+    def get_time_length(self):
+        return self._time_length
 
     def get_ctype(self):
         return self._ctype
