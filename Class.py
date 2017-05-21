@@ -7,7 +7,7 @@ class Class:
     def __init__(self, ctype, day, start, end, room, prof, notes):
         # Take the first three characters of the class type, and compare it
         # to the value of existing enum. If they match, then set them equal.
-        self._ctype = [c.name for c in CType if c.value == ctype[:3]][0]
+        self._ctype = [c for c in CType if c.value == ctype[:3]][0]
         # Class number identification
         self._cnum = ctype[3:]
         # Class number in integer form
