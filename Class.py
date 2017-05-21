@@ -7,20 +7,41 @@ class Class:
     def __init__(self, ctype, day, start, end, room, prof, notes):
         # Take the first three characters of the class type, and compare it
         # to the value of existing enum. If they match, then set them equal.
-        self.ctype = [c.name for c in CType if c.value == ctype[:3]][0]
+        self._ctype = [c.name for c in CType if c.value == ctype[:3]][0]
         # Class number identification
-        self.cnum = ctype[3:]
-        self.day = 'N/A' if day is None else day
-        self.time = Time(start, end)
-        self.room = 'N/A' if room is None else room
-        self.prof = 'N/A' if prof is None else prof
-        self.notes = 'N/A' if notes is None else notes
+        self._cnum = ctype[3:]
+        # Class number in integer form
+        self._num = int(self._cnum)
+        self._day = 'N/A' if day is None else day
+        self._time = Time(start, end)
+        self._room = 'N/A' if room is None else room
+        self._prof = 'N/A' if prof is None else prof
+        self._notes = 'N/A' if notes is None else notes
+        self._length = self._time.get_length()
 
     def __str__(self):
-        return 'Session: ' + str(self.ctype) + self.cnum + " | Day: " + self.day + \
-               " | Start: " + self.time.get_start() + " | End: " + self.time.get_end() + \
-               " | Room: " + self.room + " | Prof: " + self.prof + \
-               " | Notes: " + self.notes
+        return 'Session: ' + str(self._ctype) + self._cnum + " | Day: " + self._day + \
+               " | Start: " + self._time.get_start() + " | End: " + self._time.get_end() + \
+               " | Room: " + self._room + " | Prof: " + self._prof + \
+               " | Notes: " + self._notes
+
+    def get_cnum(self):
+        return self._cnum
+
+    def get_num(self):
+        return self._num
+
+    def get_length(self):
+        return self._length
+
+    def get_ctype(self):
+        return self._ctype
+
+    def get_day(self):
+        return self._day
+
+    def get_time(self):
+        return self._time
 
 
 class CType(Enum):
