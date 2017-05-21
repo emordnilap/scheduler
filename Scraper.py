@@ -5,6 +5,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 from Class import *
+from Course import *
 
 def get_html(course):
     '''(list of str) -> list of BeautifulSoup
@@ -133,6 +134,8 @@ def get_info(soup, course):
 if __name__ == '__main__':
     # Enrolled courses
     courses = ['cscb36h3y', 'cscb09h3y']
+    # initialization of Course
+    course = []
     # Grab a list of all the html code corresponding to each course, in soup form
     soups = get_html(courses)
     all_info = []
@@ -147,4 +150,6 @@ if __name__ == '__main__':
         # Then go through each individual class
         for i in info:
             print(i)
+        # Add new course to list of Course
+        course.append(Course(courses[e], info))
         e += 1
