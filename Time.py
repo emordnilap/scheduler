@@ -28,12 +28,19 @@ class Time():
         # Same as above, just for the ending time
         self._end_minute = int(end[e_colon + 1:len(end)])
         self._end_hour = int(end[:e_colon])
+        self._length = self.get_time_length()[0] + float(str(self.get_time_length()[1] / 60)[:4])
 
     def get_length(self):
+        return self._length
+
+    def get_time_length(self):
         return get_duration(self._start_hour, self._start_minute, self._end_hour, self._end_minute)
 
     def __str__(self):
         return self._rstart + ' - ' + self._rend
+
+    def __repr__(self):
+        return self.__str__()
 
     def get_start(self):
         return self._rstart
