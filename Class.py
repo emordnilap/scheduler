@@ -20,7 +20,7 @@ class Class:
         self._length = self._time.get_length()
 
     def __str__(self):
-        return 'Session: ' + str(self._ctype) + self._cnum + " | Day: " + self._day + \
+        return 'Session: ' + self._ctype.value + self._cnum + " | Day: " + self._day + \
                " | Start: " + self._time.get_start() + " | End: " + self._time.get_end() + \
                " | Room: " + self._room + " | Prof: " + self._prof + \
                " | Notes: " + self._notes
