@@ -1,5 +1,4 @@
 from Class import *
-import copy
 
 
 class Course():
@@ -11,7 +10,7 @@ class Course():
         Courses, defined by their code and separated into lectures,
         tutorials, and practicals.
         '''
-        self._code = code
+        self._code = code.upper()
         self._lectures = {}
         self._tutorials = {}
         self._practicals = {}
@@ -43,3 +42,18 @@ class Course():
             # If the dictionary of session is nonempty, get the length of a random session
             # If the session DNE, then its length is 0
             self._length += sum([x.get_length() for x in session[keys[0]]] if len(keys) != 0 else [])
+
+    def get_length(self):
+        return self._length
+
+    def get_lec(self):
+        return self._lectures
+
+    def get_tut(self):
+        return self._tutorials
+
+    def get_pra(self):
+        return self._practicals
+
+    def get_code(self):
+        return self._code
