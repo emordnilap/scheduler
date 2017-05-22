@@ -12,7 +12,7 @@ class Class:
         self._cnum = ctype[3:]
         # Class number in integer form
         self._num = int(self._cnum)
-        self._day = 'N/A' if day is None else day
+        self._day = [d for d in Day if d.value == day][0]
         self._time = Time(start, end)
         self._room = 'N/A' if room is None else room
         self._prof = 'N/A' if prof is None else prof
@@ -21,7 +21,7 @@ class Class:
         self._length = self._time.get_length()
 
     def __str__(self):
-        return 'Session: ' + self._ctype.value + self._cnum + " | Day: " + self._day + \
+        return 'Session: ' + self._ctype.value + self._cnum + " | Day: " + self._day.value + \
                " | Start: " + self._time.get_start() + " | End: " + self._time.get_end() + \
                " | Room: " + self._room + " | Prof: " + self._prof + \
                " | Notes: " + self._notes
@@ -55,3 +55,11 @@ class CType(Enum):
     LEC = 'LEC'
     TUT = 'TUT'
     PRA = 'PRA'
+
+
+class Day(Enum):
+    MO = 'MO'
+    TU = 'TU'
+    WE = 'WE'
+    TH = 'TH'
+    FR = 'FR'
