@@ -6,6 +6,14 @@ Scraper.py:
 
 
 
+Course.py:
+  -Added tuple time length? (if needed)
 
 General:
   -save data after collecting and reinputting filter (to save time)
+
+Filter:
+  -Maximize days off
+  -Allow a preset range of lunch period/break
+  -Maximize late starting
+  -Maximize early leaving
