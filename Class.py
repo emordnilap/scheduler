@@ -20,14 +20,11 @@ class Class:
         self._time_length = self._time.get_time_length()
         self._length = self._time.get_length()
 
-    def __str__(self):
+    def __repr__(self):
         return 'Session: ' + self._ctype.value + self._cnum + " | Day: " + self._day.value + \
                " | Start: " + self._time.get_start() + " | End: " + self._time.get_end() + \
                " | Room: " + self._room + " | Prof: " + self._prof + \
                " | Notes: " + self._notes
-
-    def __repr__(self):
-        return self.__str__()
 
     def get_cnum(self):
         return self._cnum

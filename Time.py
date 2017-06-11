@@ -36,11 +36,8 @@ class Time():
     def get_time_length(self):
         return get_duration(self._start_hour, self._start_minute, self._end_hour, self._end_minute)
 
-    def __str__(self):
-        return self._rstart + ' - ' + self._rend
-
     def __repr__(self):
-        return self.__str__()
+        return self._rstart + ' - ' + self._rend
 
     def get_start(self):
         return self._rstart
