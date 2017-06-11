@@ -57,3 +57,13 @@ class Course():
 
     def get_code(self):
         return self._code
+
+    def __repr__(self):
+        lectures = ''
+        tutorials = ''
+        for l in self._lectures.values():
+            lectures += str(l) + '\n\t\t'
+        for t in self._tutorials.values():
+            tutorials += str(t) + '\n\t\t'
+        tu = (self._code, lectures, tutorials, self._practicals)
+        return "Course code : {}\n\tLecture(s):\n\t\t{}\n\tTutorial(s):\n\t\t{}\n\tPractical(s):\n\t\t{}".format(*tu)
