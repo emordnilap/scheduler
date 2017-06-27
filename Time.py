@@ -53,15 +53,15 @@ class Time():
 
         '''
         # Compare hours to see which Time starts first
-        if self._start_hour < time.start_hour:
+        if self._start_hour < time._start_hour:
             first = self
-        elif self._start_hour > time.start_hour:
+        elif self._start_hour > time._start_hour:
             first = time
         # If their starting hours are the same, compare the minutes
         else:
-            if self._start_minute < time.start_minute:
+            if self._start_minute < time._start_minute:
                 first = self
-            elif self._start_minute > time.start_minute:
+            elif self._start_minute > time._start_minute:
                 first = time
             # If the minutes are the same, then they definitely overlap, thus conflict
             else:
@@ -75,7 +75,7 @@ class Time():
         # Get the difference between the starting time of both times
         diff_hour, diff_minute = get_duration(first._start_hour, first._start_minute, second._start_hour, second._start_minute)
         # Get the duration of the first starting time
-        dur_hour, dur_minute = first.get_length()
+        dur_hour, dur_minute = first.get_time_length()
 
         # Initialization
         is_conflicting = None
